@@ -1,7 +1,3 @@
-package day03
-
-import Day
-
 class Day03 : Day(3) {
 
     private val priorities = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"

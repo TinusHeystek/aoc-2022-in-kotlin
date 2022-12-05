@@ -1,7 +1,3 @@
-package day01
-
-import Day
-
 class Day01 : Day(1) {
 
     // --- Part 1 ---

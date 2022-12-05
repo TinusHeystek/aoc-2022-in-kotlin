@@ -1,7 +1,3 @@
-package day05
-
-import Day
-
 class Day05 : Day(5) {
 
     class Instruction(val move: Int, val from: Int, val to: Int)
@@ -9,8 +5,8 @@ class Day05 : Day(5) {
     // --- Part 1 ---
 
     private fun parseCrates(input: String, shouldReverseOrder: Boolean): String {
-        var crateGroups = mutableMapOf<Int, MutableList<Char>>()
-        var instructions = mutableListOf<Instruction>()
+        val crateGroups = mutableMapOf<Int, MutableList<Char>>()
+        val instructions = mutableListOf<Instruction>()
 
         for (line in input.lines()) {
             if (line.contains("[")) {
@@ -20,7 +16,7 @@ class Day05 : Day(5) {
                     if (crate == ' ')
                         continue
 
-                    val crateIndex: Int = index.floorDiv(4);
+                    val crateIndex: Int = index.floorDiv(4)
                     if (crateGroups.containsKey(crateIndex)) {
                         crateGroups[crateIndex]?.add(crate)
                     } else {
@@ -55,9 +51,7 @@ class Day05 : Day(5) {
         val outputChars = crateGroups.toSortedMap()
             .map { it.value.first() }
 
-        val output = String(outputChars.toCharArray())
-
-        return output
+        return String(outputChars.toCharArray())
     }
 
     override fun part1ToString(input: String): String {
