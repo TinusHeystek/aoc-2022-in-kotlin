@@ -18,12 +18,12 @@ open class Day(private val dayNumber: Int) {
         return "not implemented"
     }
 
-    fun readTestInputForDay(dayNumber: Int): String {
+    private fun readTestInputForDay(dayNumber: Int): String {
         val dayString = dayNumber.toString().padStart(2, '0')
         return File("src/inputs" , "Day${dayString}_test.txt").readText()
     }
 
-    fun readInputForDay(dayNumber: Int): String {
+    private fun readInputForDay(dayNumber: Int): String {
         val dayString = dayNumber.toString().padStart(2, '0')
         return File("src/inputs" , "Day${dayString}.txt").readText()
     }
