@@ -14,6 +14,5 @@ class Day00 : Day(0) {
 }
 
 fun main() {
-    val day = Day00()
-    day.printToIntResults(1, 1)
+    Day00().printToIntResults(1, 1)
 }
