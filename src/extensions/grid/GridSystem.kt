@@ -1,17 +1,19 @@
 package extensions.grid
 import kotlin.math.abs
+import kotlin.math.sign
 
 typealias Point = Pair<Int, Int>
 val Point.x: Int get() = first
 val Point.y: Int get() = second
 infix operator fun Point.plus(other: Point) = x + other.x to y + other.y
 infix operator fun Point.minus(other: Point) = x - other.x to y - other.y
+val Point.sign: Point get() = x.sign to y.sign
 
 open class Node(val point: Point) {
     override fun toString(): String = "($point.x, $point.y)"
 }
 
-open class Grid<T>(private val map: List<List<T>>) {
+open class Grid<T>(val map: List<List<T>>) {
     val width = map[0].size
     val height = map.size
 
@@ -28,13 +30,18 @@ open class Grid<T>(private val map: List<List<T>>) {
         return point.x >= 0 && point.y >= 0 && point.x < width && point.y < height
     }
 
-    fun getNeighbours(currentPoint: Point): List<T> {
+    fun getNeighbours(currentPoint: Point, directionalVectors: List<Point> = directional4): List<T> {
         val neighbours = mutableListOf<T>()
-        for (neighbourVector in directional4) {
+        for (neighbourVector in directionalVectors) {
             val neighbourPoint = currentPoint + neighbourVector
             if (isValidGridPosition(neighbourPoint))
                 neighbours.add(getNode(neighbourPoint))
         }
         return neighbours
+    }
+
+    fun print() {
+        map.forEach{ row -> println(row.joinToString(""))}
+        println("")
     }
 }

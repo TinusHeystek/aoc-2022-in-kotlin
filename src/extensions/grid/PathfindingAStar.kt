@@ -33,7 +33,7 @@ open class PathfindingAStar<T: PathNode>(val grid: Grid<T>, val directionalVecto
             openList.remove(currentNode)
             closedList.add(currentNode)
 
-            val neighbourNodes = grid.getNeighbours(currentNode.point)
+            val neighbourNodes = grid.getNeighbours(currentNode.point, directionalVectors)
             for (neighbourNode in neighbourNodes) {
                 if (closedList.contains(neighbourNode)) {
                     continue
